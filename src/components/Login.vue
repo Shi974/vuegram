@@ -2,7 +2,7 @@
     <div id="login">
         <transition name="fade">
             <div v-if="performingRequest" class="loading">
-                <p>Loading...</p>
+                <p>Patientez ...</p>
             </div>
         </transition>
         <section>
