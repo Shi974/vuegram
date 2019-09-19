@@ -83,6 +83,11 @@
 </template>
 
 <script>
+/* // TODO Checker net ninja + son code
+// https://www.youtube.com/watch?reload=9&v=ieCsEdq94TA
+// https://github.com/iamshaunjp/vuejs-playlist/blob/lesson-44/src/components/showBlogs.vue 
+// https://firebase.google.com/docs/firestore/query-data/get-data?authuser=0 */
+
     import {
         mapState
     } from 'vuex'

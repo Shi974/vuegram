@@ -8,7 +8,9 @@
         <section>
             <div class="col1">
                 <h1>Vuegram</h1>
-                <p>Bienvenue sur mon application web de réseau social propulsée par Vue.js et Firebase.</p>
+                <p>Bienvenue sur mon application web de réseau social développée avec Vue.js et Firebase Toosls.
+                    <br/><strong><i class="fas fa-exclamation-triangle"></i> Application en cours de développement ! <i class="fas fa-exclamation-triangle"></i></strong>
+                </p>
             </div>
             <div class="col2" :class="{ 'signup-form': !showLoginForm && !showForgotPassword }">
                 <form v-if="showLoginForm" @submit.prevent>
