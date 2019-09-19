@@ -1,21 +1,21 @@
 <template>
     <section id="settings">
         <div class="col1">
-            <h3>Settings</h3>
-            <p>Update your profile</p>
+            <h3>Paramètres</h3>
+            <p>Mettre à jour le profil</p>
 
             <transition name="fade">
-                <p v-if="showSuccess" class="success">profile updated</p>
+                <p v-if="showSuccess" class="success">Profil mis à jour !</p>
             </transition>
 
             <form @submit.prevent>
-                <label for="name">Name</label>
+                <label for="name">Prénom</label>
                 <input v-model.trim="name" type="text" :placeholder="userProfile.name" id="name" />
 
-                <label for="title">Job Title</label>
+                <label for="title">Nom</label>
                 <input v-model.trim="title" type="text" :placeholder="userProfile.title" id="title" />
 
-                <button @click="updateProfile" class="button">Update Profile</button>
+                <button @click="updateProfile" class="button">Mettre à jour</button>
             </form>
         </div>
     </section>

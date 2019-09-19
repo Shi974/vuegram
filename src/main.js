@@ -11,17 +11,17 @@ Vue.config.productionTip = false
 let app
 fb.auth.onAuthStateChanged(user => {
   if (!app) {
+    // app = new Vue({
+    //   el: '#app',
+    //   router,
+    //   store,
+    //   render: h => h(App)
+    // })
     app = new Vue({
-      el: '#app',
       router,
       store,
+      // render: function (h) { return h(App) }
       render: h => h(App)
-    })
+    }).$mount('#app')
   }
 })
-
-// new Vue({
-//   router,
-//   store,
-//   render: function (h) { return h(App) }
-// }).$mount('#app')

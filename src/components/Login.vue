@@ -14,17 +14,17 @@
                 <form v-if="showLoginForm" @submit.prevent>
                     <h1>Bon retour parmi nous !</h1>
 
-                    <label for="email1">Email</label>
+                    <label for="email1"><i class="fas fa-envelope"></i> Email</label>
                     <input v-model.trim="loginForm.email" type="text" placeholder="nom@email.com" id="email1" />
 
-                    <label for="password1">Mot de passe</label>
+                    <label for="password1"><i class="fas fa-lock"></i> Mot de passe</label>
                     <input v-model.trim="loginForm.password" type="password" placeholder="******" id="password1" />
 
-                    <button @click="login" class="button">Se connecter</button>
+                    <button @click="login" class="button">Se connecter <i class="fas fa-sign-in-alt"></i></button>
 
                     <div class="extras">
-                        <a @click="togglePasswordReset">Mot de passe oublié</a>
-                        <a @click="toggleForm">Créer un compte</a>
+                        <a @click="togglePasswordReset">Mot de passe oublié <i class="fas fa-question"></i></a>
+                        <a @click="toggleForm">Créer un compte <i class="fas fa-user"></i></a>
                     </div>
                 </form>
                 <form v-if="!showLoginForm && !showForgotPassword" @submit.prevent>
@@ -36,17 +36,17 @@
                     <label for="title">Nom</label>
                     <input v-model.trim="signupForm.title" type="text" placeholder="Yang" id="title" />
 
-                    <label for="email2">Email</label>
+                    <label for="email2"><i class="fas fa-envelope"></i> Email</label>
                     <input v-model.trim="signupForm.email" type="text" placeholder="nom@email.com" id="email2" />
 
-                    <label for="password2">Mot de passe</label>
+                    <label for="password2"><i class="fas fa-lock"></i> Mot de passe</label>
                     <input v-model.trim="signupForm.password" type="password" placeholder="minimum 6 caractères"
                         id="password2" />
 
-                    <button @click="signup" class="button">Créer un compte</button>
+                    <button @click="signup" class="button">Créer un compte <i class="fas fa-user"></i></button>
 
                     <div class="extras">
-                        <a @click="toggleForm">Se connecter</a>
+                        <a @click="toggleForm">Se connecter <i class="fas fa-sign-in-alt"></i></a>
                     </div>
                 </form>
                 <form v-if="showForgotPassword" @submit.prevent class="password-reset">
@@ -54,19 +54,19 @@
                         <h1>Réinitialiser le mot de passe</h1>
                         <p>Un email vous sera envoyé pour réinitialiser le mot de passe</p>
 
-                        <label for="email3">Email</label>
+                        <label for="email3"><i class="fas fa-envelope"></i> Email</label>
                         <input v-model.trim="passwordForm.email" type="text" placeholder="nom@email.com" id="email3" />
 
                         <button @click="resetPassword" class="button">Envoyer</button>
 
                         <div class="extras">
-                            <a @click="togglePasswordReset">Se connecter</a>
+                            <a @click="togglePasswordReset">Se connecter <i class="fas fa-sign-in-alt"></i></a>
                         </div>
                     </div>
                     <div v-else>
                         <h1>Email envoyé !</h1>
                         <p>Vérifiez vos emails pour réinitialiser le mot de passe</p>
-                        <button @click="togglePasswordReset" class="button">Se connecter</button>
+                        <button @click="togglePasswordReset" class="button">Se connecter <i class="fas fa-sign-in-alt"></i></button>
                     </div>
                 </form>
                 <transition name="fade">
@@ -121,8 +121,8 @@
             },
             login() {
                 this.performingRequest = true
-                fb.auth.signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password).then(user => {
-                    this.$store.commit('setCurrentUser', user)
+                fb.auth.signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password).then(credential => {
+                    this.$store.commit('setCurrentUser', credential.user)
                     this.$store.dispatch('fetchUserProfile')
                     this.performingRequest = false
                     this.$router.push('/dashboard')
@@ -134,10 +134,10 @@
             },
             signup() {
                 this.performingRequest = true
-                fb.auth.createUserWithEmailAndPassword(this.signupForm.email, this.signupForm.password).then(user => {
-                    this.$store.commit('setCurrentUser', user)
+                fb.auth.createUserWithEmailAndPassword(this.signupForm.email, this.signupForm.password).then(credential => {
+                    this.$store.commit('setCurrentUser', credential.user)
                     // create user obj
-                    fb.usersCollection.doc(user.uid).set({
+                    fb.usersCollection.doc(credential.user.uid).set({
                         name: this.signupForm.name,
                         title: this.signupForm.title
                     }).then(() => {
