@@ -30,11 +30,11 @@
                 <form v-if="!showLoginForm && !showForgotPassword" @submit.prevent>
                     <h1>Inscription</h1>
 
-                    <label for="name">Prénom</label>
-                    <input v-model.trim="signupForm.name" type="text" placeholder="Annie" id="name" />
+                    <label for="name">Pseudo</label>
+                    <input v-model.trim="signupForm.name" type="text" placeholder="Pseudo" id="name" />
 
-                    <label for="title">Nom</label>
-                    <input v-model.trim="signupForm.title" type="text" placeholder="Yang" id="title" />
+                    <label for="title">Prénom</label>
+                    <input v-model.trim="signupForm.title" type="text" placeholder="Prénom" id="title" />
 
                     <label for="email2"><i class="fas fa-envelope"></i> Email</label>
                     <input v-model.trim="signupForm.email" type="text" placeholder="nom@email.com" id="email2" />

@@ -9,10 +9,10 @@
             </transition>
 
             <form @submit.prevent>
-                <label for="name">Prénom</label>
+                <label for="name">Pseudo</label>
                 <input v-model.trim="name" type="text" :placeholder="userProfile.name" id="name" />
 
-                <label for="title">Nom</label>
+                <label for="title">Prénom</label>
                 <input v-model.trim="title" type="text" :placeholder="userProfile.title" id="title" />
 
                 <button @click="updateProfile" class="button">Mettre à jour</button>
